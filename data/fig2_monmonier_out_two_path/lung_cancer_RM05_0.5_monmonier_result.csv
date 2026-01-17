@@ -1,0 +1,13 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+1.565,1.02,run1,dir1,1,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.331666667,1.2333333335,run1,dir1,2,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.378333333,0.763333333,run1,dir1,3,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.453333333,0.568333333,run1,dir1,4,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.565,1.02,run1,dir2,1,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.7149999999999999,0.5916666665,run1,dir2,2,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.565,0.3966666665,run1,dir2,3,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+1.453333333,0.568333333,run1,dir2,4,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+0.6316666664999999,0.3766666665,run2,dir1,1,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+0.6316666664999999,0.3766666665,run2,dir2,1,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+0.5566666665,0.57,run2,dir2,2,lung_cancer_RM05,lung_cancer,0.5,12,7e-4
+0.3516666665,0.6316666665,run2,dir2,3,lung_cancer_RM05,lung_cancer,0.5,12,7e-4

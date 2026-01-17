@@ -1,0 +1,10 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+495.72821805,433.5446962,run1,dir1,1,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+409.402884,418.99279025,run1,dir1,2,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+495.72821805,433.5446962,run1,dir2,1,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+485.70117065,389.711478,run1,dir2,2,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+508.51156935,355.5207832,run1,dir2,3,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+484.2052873,342.7374319,run1,dir2,4,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+481.38192745000003,295.7633858,run1,dir2,5,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+406.6451753,342.7374319,run2,dir1,1,bladder_cancer_P1,bladder_cancer,0.6,11,0.313
+406.6451753,342.7374319,run2,dir2,1,bladder_cancer_P1,bladder_cancer,0.6,11,0.313

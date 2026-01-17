@@ -1,0 +1,12 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+2.7232000000000003,1.6471,run1,dir1,1,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+2.7623499999999996,2.0348,run1,dir1,2,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+2.8362999999999996,2.4051,run1,dir1,3,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+3.3281,2.4149000000000003,run1,dir1,4,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+3.84315,2.47485,run1,dir1,5,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+2.7232000000000003,1.6471,run1,dir2,1,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+2.5677000000000003,1.40855,run1,dir2,2,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+2.7982500000000003,1.1171,run1,dir2,3,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+2.9682500000000003,0.8754,run1,dir2,4,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+3.59625,2.9362500000000002,run2,dir1,1,liver_cancer_DT14,liver_cancer,0.8,24,0.273
+3.59625,2.9362500000000002,run2,dir2,1,liver_cancer_DT14,liver_cancer,0.8,24,0.273

@@ -1,0 +1,7 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+1.8399452649999999,6.476745351,run1,dir1,1,colorectal_cancer_P3,colorectal_cancer,0.8,20,0.0027
+1.8399452649999999,6.476745351,run1,dir2,1,colorectal_cancer_P3,colorectal_cancer,0.8,20,0.0027
+3.1460344265,9.687064188,run2,dir1,1,colorectal_cancer_P3,colorectal_cancer,0.8,20,0.0027
+3.9806126125,9.794722442000001,run2,dir1,2,colorectal_cancer_P3,colorectal_cancer,0.8,20,0.0027
+3.1460344265,9.687064188,run2,dir2,1,colorectal_cancer_P3,colorectal_cancer,0.8,20,0.0027
+3.2939017505,8.2896256055,run2,dir2,2,colorectal_cancer_P3,colorectal_cancer,0.8,20,0.0027

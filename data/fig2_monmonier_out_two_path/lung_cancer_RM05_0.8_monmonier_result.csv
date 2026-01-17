@@ -1,0 +1,5 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+1.565,1.02,run1,dir1,1,lung_cancer_RM05,lung_cancer,0.8,12,5e-4
+1.565,1.02,run1,dir2,1,lung_cancer_RM05,lung_cancer,0.8,12,5e-4
+1.565,0.3966666665,run2,dir1,1,lung_cancer_RM05,lung_cancer,0.8,12,5e-4
+1.565,0.3966666665,run2,dir2,1,lung_cancer_RM05,lung_cancer,0.8,12,5e-4

@@ -1,0 +1,166 @@
+Abbreviation,PatientID,Tumor type,Patient,Sample number,Paper / Data Collection Name,DOI,Year
+HCC,P_001,hepatocellular carcinomas,DT03,5,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_002,hepatocellular carcinomas,DT04,7,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_003,hepatocellular carcinomas,DT06,29,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_004,hepatocellular carcinomas,DT07,18,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_005,hepatocellular carcinomas,DT09,30,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_006,hepatocellular carcinomas,DT10,15,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_007,hepatocellular carcinomas,DT12,19,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_008,hepatocellular carcinomas,DT13,14,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_009,hepatocellular carcinomas,DT14,24,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_010,hepatocellular carcinomas,DT16,27,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_011,hepatocellular carcinomas,DT17,13,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_012,hepatocellular carcinomas,DT18,5,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_013,hepatocellular carcinomas,DT19,16,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_014,hepatocellular carcinomas,DT42,12,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_015,hepatocellular carcinomas,DT43,23,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_016,hepatocellular carcinomas,DT48,20,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_017,hepatocellular carcinomas,DT50,24,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_018,hepatocellular carcinomas,DT51,30,Tumor phylogeography reveals block-shaped spatial heterogeneity and the mode of evolution in Hepatocellular Carcinoma,10.1038/s41467-024-47541-9,2024
+HCC,P_019,hepatocellular carcinomas,ITH01,11,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_020,hepatocellular carcinomas,ITH06,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_021,hepatocellular carcinomas,ITH07,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_022,hepatocellular carcinomas,ITH09,6,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_023,hepatocellular carcinomas,ITH100,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_024,hepatocellular carcinomas,ITH101,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_025,hepatocellular carcinomas,ITH102,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_026,hepatocellular carcinomas,ITH105,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_027,hepatocellular carcinomas,ITH111,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_028,hepatocellular carcinomas,ITH112,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_029,hepatocellular carcinomas,ITH128,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_030,hepatocellular carcinomas,ITH13,6,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_031,hepatocellular carcinomas,ITH131,6,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_032,hepatocellular carcinomas,ITH136,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_033,hepatocellular carcinomas,ITH24,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_034,hepatocellular carcinomas,ITH31,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_035,hepatocellular carcinomas,ITH32,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_036,hepatocellular carcinomas,ITH37,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_037,hepatocellular carcinomas,ITH40,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_038,hepatocellular carcinomas,ITH41,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_039,hepatocellular carcinomas,ITH43,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_040,hepatocellular carcinomas,ITH45,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_041,hepatocellular carcinomas,ITH50,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_042,hepatocellular carcinomas,ITH51,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_043,hepatocellular carcinomas,ITH52,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_044,hepatocellular carcinomas,ITH55,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_045,hepatocellular carcinomas,ITH63,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_046,hepatocellular carcinomas,ITH66,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_047,hepatocellular carcinomas,ITH67,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_048,hepatocellular carcinomas,ITH69,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_049,hepatocellular carcinomas,ITH72,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_050,hepatocellular carcinomas,ITH75,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_051,hepatocellular carcinomas,ITH76,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_052,hepatocellular carcinomas,ITH77,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_053,hepatocellular carcinomas,ITH80,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_054,hepatocellular carcinomas,ITH82,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_055,hepatocellular carcinomas,ITH83,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_056,hepatocellular carcinomas,ITH84,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_057,hepatocellular carcinomas,ITH86,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_058,hepatocellular carcinomas,ITH87,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_059,hepatocellular carcinomas,ITH90,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_060,hepatocellular carcinomas,ITH91,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_061,hepatocellular carcinomas,ITH96,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_062,hepatocellular carcinomas,ITH97,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+HCC,P_063,hepatocellular carcinomas,ITH98,5,A multimodal atlas of hepatocellular carcinoma reveals convergent evolutionary paths and 'bad apple' effect on clinical trajectory,10.1016/j.jhep.2024.05.017,2024
+LUAD,P_064,Lung adenocarcinoma,RM01,7,Private data,NA,NA
+LUAD,P_065,Lung adenocarcinoma,RM03,12,Private data,NA,NA
+LUAD,P_066,Lung adenocarcinoma,RM05,12,Private data,NA,NA
+LUAD,P_067,Lung adenocarcinoma,RM08,5,Private data,NA,NA
+LUAD,P_068,Lung adenocarcinoma,RM09,6,Private data,NA,NA
+LUAD,P_069,Lung adenocarcinoma,RM14,9,Private data,NA,NA
+LUAD,P_070,Lung adenocarcinoma,RM16,6,Private data,NA,NA
+LUAD,P_071,Lung adenocarcinoma,RM18,11,Private data,NA,NA
+CRC,P_072,colorectal cancer,1,5,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_073,colorectal cancer,10,5,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_074,colorectal cancer,12,7,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_075,colorectal cancer,13,6,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_076,colorectal cancer,15,7,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_077,colorectal cancer,16,4,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_078,colorectal cancer,3,4,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_079,colorectal cancer,5,4,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_080,colorectal cancer,6,5,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_081,colorectal cancer,8,6,A temporal shift of the evolutionary principle shaping intratumor heterogeneity in colorectal cancer,10.1038/s41467-018-05226-0,2018
+CRC,P_082,colorectal cancer,P2,9,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_083,colorectal cancer,P3,20,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_084,colorectal cancer,P4,5,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_085,colorectal cancer,P5,6,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_086,colorectal cancer,P6,6,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_087,colorectal cancer,P7,6,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_088,colorectal cancer,P8,6,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+CRC,P_089,colorectal cancer,P9,5,Integrated Multiregional Analysis Proposing a New Model of Colorectal Cancer Evolution,10.1371/journal.pgen.1005778,2016
+GOA,P_090,gastroesophageal cancer,1,7,Extreme intratumour heterogeneity and driver evolution in mismatch repair deficient gastro-oesophageal cancer,10.1038/s41467-019-13915-7,2020
+GOA,P_091,gastroesophageal cancer,2,7,Extreme intratumour heterogeneity and driver evolution in mismatch repair deficient gastro-oesophageal cancer,10.1038/s41467-019-13915-7,2020
+GOA,P_092,gastroesophageal cancer,3,7,Extreme intratumour heterogeneity and driver evolution in mismatch repair deficient gastro-oesophageal cancer,10.1038/s41467-019-13915-7,2020
+GOA,P_093,gastroesophageal cancer,4,7,Extreme intratumour heterogeneity and driver evolution in mismatch repair deficient gastro-oesophageal cancer,10.1038/s41467-019-13915-7,2020
+ESCA,P_094,esophageal cancer,ESCC001,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_095,esophageal cancer,ESCC002,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_096,esophageal cancer,ESCC005,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_097,esophageal cancer,ESCC007,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_098,esophageal cancer,ESCC008,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_099,esophageal cancer,ESCC009,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_100,esophageal cancer,ESCC015,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_101,esophageal cancer,ESCC016,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_102,esophageal cancer,ESCC019,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_103,esophageal cancer,ESCC023,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_104,esophageal cancer,ESCC030,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_105,esophageal cancer,ESCC034,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_106,esophageal cancer,ESCC042,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_107,esophageal cancer,ESCC045,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_108,esophageal cancer,ESCC046,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_109,esophageal cancer,ESCC047,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_110,esophageal cancer,ESCC048,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_111,esophageal cancer,ESCC049,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_112,esophageal cancer,ESCC050,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_113,esophageal cancer,ESCC053,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_114,esophageal cancer,ESCC054,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_115,esophageal cancer,ESCC055,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_116,esophageal cancer,ESCC056,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_117,esophageal cancer,ESCC057,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_118,esophageal cancer,ESCC058,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_119,esophageal cancer,ESCC060,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_120,esophageal cancer,ESCC062,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_121,esophageal cancer,ESCC063,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_122,esophageal cancer,ESCC064,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_123,esophageal cancer,ESCC066,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_124,esophageal cancer,ESCC067,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_125,esophageal cancer,ESCC069,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_126,esophageal cancer,ESCC070,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_127,esophageal cancer,ESCC071,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_128,esophageal cancer,ESCC072,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_129,esophageal cancer,ESCC073,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_130,esophageal cancer,ESCC075,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_131,esophageal cancer,ESCC077,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_132,esophageal cancer,ESCC078,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_133,esophageal cancer,ESCC080,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_134,esophageal cancer,ESCC083,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_135,esophageal cancer,ESCC086,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_136,esophageal cancer,ESCC087,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_137,esophageal cancer,ESCC088,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_138,esophageal cancer,ESCC089,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_139,esophageal cancer,ESCC091,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_140,esophageal cancer,ESCC092,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_141,esophageal cancer,ESCC094,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_142,esophageal cancer,ESCC095,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_143,esophageal cancer,ESCC098,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_144,esophageal cancer,ESCC099,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_145,esophageal cancer,ESCC100,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_146,esophageal cancer,ESCC102,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_147,esophageal cancer,ESCC103,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_148,esophageal cancer,ESCC104,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_149,esophageal cancer,ESCC106,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_150,esophageal cancer,ESCC107,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_151,esophageal cancer,ESCC110,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+ESCA,P_152,esophageal cancer,ESCC111,5,Immune-tumor interaction dictates spatially directed evolution of esophageal squamous cell carcinoma,10.1093/nsr/nwae150,2024
+BLCA,P_153,bladder cancer,P1,11,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_154,bladder cancer,P2,7,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_155,bladder cancer,P3,7,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_156,bladder cancer,P4,11,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_157,bladder cancer,P5,5,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_158,bladder cancer,P6,8,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_159,bladder cancer,P7,4,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_160,bladder cancer,P8,5,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+BLCA,P_161,bladder cancer,P9,4,"Multiregion human bladder cancer sequencing reveals tumour evolution, bladder cancer phenotypes and implications for targeted therapy",10.1002/path.5250,2019
+PCa,P_162,prostate cancer,P6,4,Analysis of the genetic phylogeny of multifocal prostate cancer identifies multiple independent clonal expansions in neoplastic and morphologically normal prostate tissue,10.1038/ng.3221,2015
+PCa,P_163,prostate cancer,P7,5,Analysis of the genetic phylogeny of multifocal prostate cancer identifies multiple independent clonal expansions in neoplastic and morphologically normal prostate tissue,10.1038/ng.3221,2015
+Panc-NEC,P_164,pancreatic neuroendocrine cancer,20,20,Comprehensive Genomic Profiling of Neuroendocrine Carcinomas of the Gastrointestinal System,10.1158/2159-8290.CD-21-0669,2022
+GC,P_165,gastric cancer,P1,6,Identification of trunk mutations in gastric carcinoma: a case study,10.1186/s12920-017-0285-y,2017

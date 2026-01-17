@@ -1,0 +1,14 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+427.5760108,364.73698645,run1,dir1,1,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+377.89791105,309.75995815,run1,dir1,2,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+377.89791105,248.42680000000001,run1,dir1,3,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+328.2198113,248.57963385,run1,dir1,4,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+277.88322515,187.2464757,run1,dir1,5,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+427.5760108,364.73698645,run1,dir2,1,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+377.89791105,364.8898203,run1,dir2,2,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+328.2198113,364.8898203,run1,dir2,3,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+277.88322515,364.8898203,run1,dir2,4,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+277.88322515,419.8668486,run1,dir2,5,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+173.2118247,418.2537289,run2,dir1,1,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+173.2118247,418.2537289,run2,dir2,1,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761
+227.546639,360.90519555000003,run2,dir2,2,pancreatic_cancer_20,pancreatic_cancer,0.5,18,0.2761

@@ -1,0 +1,4 @@
+bound_x,bound_y,run_id,dir,step,patient_cancer,tumor_type,threshold,sample_num,matel_p
+419.01160504999996,438.8002078,run1,dir1,1,bladder_cancer_P4,bladder_cancer,0.9,11,0.2343
+245.594065945,394.09207795,run1,dir1,2,bladder_cancer_P4,bladder_cancer,0.9,11,0.2343
+419.01160504999996,438.8002078,run1,dir2,1,bladder_cancer_P4,bladder_cancer,0.9,11,0.2343

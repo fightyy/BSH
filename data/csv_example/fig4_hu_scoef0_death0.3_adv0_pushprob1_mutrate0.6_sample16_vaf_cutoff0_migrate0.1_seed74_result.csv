@@ -1,0 +1,2 @@
+"migrate_rate","s_coef","death_rate","birth_rate","adv_rate","push_prop","mut_rate","sample_diameter","vaf_cutoff","seed","diameter","genetic_cluster","value_enn","value_lsi"
+0.1,0,0.3,0.7,0,1,0.6,16,0,74,200,3,0.42,1.25
