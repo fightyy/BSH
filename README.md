@@ -1,10 +1,10 @@
-### ssRNA-Virus-Signatures
+### BSH
 
-This is the code for **An expanding universe of mutational signatures and its rapid evolution in single stranded RNA viruses (ssRNA-Virus-Signatures)**.
+This is the code for **Block-Shaped Heterogeneity as an Emergent Principle of Spatial Heterogeneity Across Human Solid Tumors**.
 
 #### *Directory structure*
 
-The code for ssRNA-Virus-Signatures is organized into different directories and scripts.
+The code for BSH is organized into different directories and scripts.
 
 The directory structure is as follows:
 
