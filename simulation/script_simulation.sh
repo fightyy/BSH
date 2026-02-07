@@ -13,6 +13,7 @@ mig_rate=0
 punch_diameter=3
 puch_density=0.1
 spacing=3
+npub=175
 title="example"
 snapname="snap_example"
 python 3DTumorSimulPush.py \
@@ -31,5 +32,6 @@ python 3DTumorSimulPush.py \
   $punch_diameter \
   $puch_density \
   $spacing \
+  $npub \
   $title \
   $snapname

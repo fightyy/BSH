@@ -290,7 +290,7 @@ def initiateFirstDeme(maxsize, lineage, current_id):
 
         neu_list = neu_qui_list + neu_div_list_double
         adv_list = adv_qui_list + adv_div_list_double
-        print(adv_list)
+        #print(adv_list)
         current_deme_size = len(neu_list) + len(adv_list)
 
     return neu_list, adv_list, current_id, lineage
