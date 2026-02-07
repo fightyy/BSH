@@ -23,17 +23,7 @@ Python packages: numpy, sys, math, random, heapq, subprocess, collections
 
 ## Usage
 
-### 1. Set simulation dimensionality
-
-Inside the script, the global variable controls whether you run a 2D or 3D simulation:
-
-```bash
-SIMULATION_DIM = 2  # 2 for 2D simulations, 3 for 3D simulations
-```
-
-Set this before running the script.
-
-### 2. Command-line interface
+### 1. Command-line interface
 
 The script is designed to be run from the command line and expects **16 arguments**:
 
@@ -41,7 +31,7 @@ The script is designed to be run from the command line and expects **16 argument
 python3 3DTumorSimulPush.py \
   <sim_dim> <deme_size> <mut_rate> <adv_rate> <s_coef> <repl> <path> <rd> \
   <birth_rate> <death_rate> <push_prop> <mig_rate> <punch_diameter> \
-  <punch_density> <spacing> <title> <snapname>
+  <punch_density> <spacing> <npub> <title> <snapname>
 ```
 
 #### Arguments
@@ -53,10 +43,10 @@ python3 3DTumorSimulPush.py \
     Number of cells per deme (fission threshold is based on this).
 
 3. **`mut_rate`** (float)
-    Neutral mutation rate per cell division over the whole exonic region.
+    Mutation rate per cell division.
 
 4. **`adv_rate`** (float)
-    Advantageous (driver) mutation mutation rate.
+    Advantageous (driver) mutation rate.
 
 5. **`s_coef`** (float)
     Selection coefficient for advantageous mutations.
@@ -71,9 +61,6 @@ python3 3DTumorSimulPush.py \
 
    Half-side length / radius of the lattice domain:
 
-   - 2D: lattice size ≈ `(2*rd + 1) × (2*rd + 1)`
-   - 3D: lattice size ≈ `(2*rd + 1)³`
-
 9. **`birth_rate`** (float)
     Birth probability for cells in a deme.
 
@@ -82,27 +69,31 @@ python3 3DTumorSimulPush.py \
     The quiescent probability is computed as `quies_rate = 1 - birth_rate - death_rate`.
 
 11. **`push_prop`** (float)
-       Proportion of tumor diameter allowed as maximum push distance.
+        Proportion of tumor diameter allowed as maximum push distance.
 
 12. **`mig_rate`** (float)
-       Migration probability per deme per event step (`MIGRATION_PROB`).
+        Migration probability per deme per event step.
 
 13. **`punch_diameter`** (int)
-       Diameter (in lattice units) of each virtual punch biopsy used for multi-region sampling.
+        Diameter (in lattice units) of each virtual punch biopsy used for multi-region sampling.
 
 14. **`punch_density`** (float)
-       Minimum fraction of tumour demes that must be present inside a punch for that biopsy to be considered valid.
+        Minimum fraction of tumour demes that must be present inside a punch for that biopsy to be considered valid.
 
 15. **`spacing`** (int)
-       Spacing (in lattice units) between the centres of adjacent punch biopsies when tiling the tumour slice.
+        Spacing (in lattice units) between the centres of adjacent punch biopsies.
 
-16. **`title`** (str)
-       Prefix for output file names (used for VAF files, location files, etc.).
+16. **npub** (int)
 
-17. **`snapname`** (str)
-       Prefix for spatial snapshot files written during tumour growth.
+     Number of public (clonal) mutations to generate
 
-### 3. Example command
+17. **`title`** (str)
+        Prefix for output file names (used for VAF files, location files, etc.).
+
+18. **`snapname`** (str)
+        Prefix for spatial snapshot files written during tumour growth.
+
+### 2. Example command
 
 ```bash
 python3 3DTumorSimulPush.py \
@@ -121,6 +112,7 @@ python3 3DTumorSimulPush.py \
   20 \
   0.95 \
   16 \
+  175 \
   example_sim \
   example_snap
 ```
@@ -141,13 +133,13 @@ All results are written to the output directory . Typical outputs include:
    Files like:
   - `<snapname>_prop1_32.txt`, …, `<snapname>_prop6_8.txt`
   - Final snapshot: `<snapname>_prop8_8.txt`
-     These contain deme coordinates, deme category(if all cells in deme are neutral cells, this category will be 1 else 2 ), and mutation counts of demes.
+     These represent a central cross-section of the tumour along the z-axis, containing deme coordinates, deme category (if all cells in deme are neutral cells, this category will be 1 else 2 ), and mutation counts of the deme.
 - **Sampling locations**
   - `<title>_deme_location.txt`
      Tab-delimited file listing `(x, y, z, sample_id)` for each punch biopsy centre.
 - **VAF matrix**
   - `<title>_deme_vaf.txt`
-     Mutations (rows) × samples (columns), with alternating depth and VAF columns for each sample. Includes both “public” clonal mutations and private mutations.
+     Mutations (rows) × samples (columns), with total depth and VAF columns for each sample. 
 - **Driver mutation information**
   - `<title>_adv_mutation.txt`
      Contains the ID of the advantageous mutation (`adv_id`), or `"none"` if no driver clone arose.

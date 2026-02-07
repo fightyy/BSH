@@ -500,7 +500,7 @@ def record_snapshot(label, space, SIMULATION_DIM, rd):
         if SIMULATION_DIM == 3:
             f.write("x\ty\tcategory\tmutation_count\n")
             for coord, deme in space.items():
-                # 只记录 z==rd 的平面
+                # Only record the slice where z==rd
                 if len(coord) >= 3 and coord[2] == rd and deme.present:
                     x, y = coord[0], coord[1]
                     category = 2 if len(deme.advant) > 0 else 1
@@ -523,7 +523,6 @@ def localNeighbor_square(a, b, c, r):
     """
     neighbor = []
     if SIMULATION_DIM == 2:
-        # 仅返回二维邻域，忽略 c 的影响
         for dx in range(-r, r):
             for dy in range(-r, r):
                 neighbor.append((a+dx, b+dy))
@@ -533,7 +532,7 @@ def localNeighbor_square(a, b, c, r):
                 for dz in range(-r, r):
                     neighbor.append((a+dx, b+dy, c+dz))
     else:
-        raise ValueError("SIMULATION_DIM必须为2或3")
+        raise ValueError("SIMULATION_DIM must be 2 or 3")
     return neighbor
 
 def generate_samples(punch_diameter, spacing):
@@ -634,9 +633,7 @@ def _min_gens_to_fission_quies(n_neu, n_adv, birth_rate, s_coef, quies_rate, dem
         val = (n_neu * (a_n ** g) if n_neu > 0 else 0.0) + (n_adv * (a_a ** g) if n_adv > 0 else 0.0)
         if val >= target:
             return g
-    return None  # 认为不可达
-
-
+    return None  
 
 
 def _schedule_next_with_expected_divisions(coord, now):
@@ -757,7 +754,6 @@ def perform_migration_batch(space, p, max_push):
 # ========================= Parameter initialisation =========================
 # Global simulation settings (can be adjusted)
 adv_clone = 0           # count for whether an advantageous clone
-npub = 175              # number of public (clonal) mutations to generate
 seq_depth = 100         # mean sequencing depth
 
 # Command-line input parameters
@@ -776,9 +772,11 @@ mig_rate = float(sys.argv[12])      # migration probability for a deme
 punch_diameter = int(sys.argv[13])  # diameter of the biopsy / sampling region
 puch_density = float(sys.argv[14])  # minimum fraction of tumor demes that must be present within the sampling cube for the punch biopsy to be considered valid
 spacing = int(sys.argv[15])         # spacing between bulk sampling centres
-title = str(sys.argv[16])           # prefix for output file names                
-snapname = str(sys.argv[17])        # prefix for snapshot file names
+npub = int(sys.argv[16])            # number of public (clonal) mutations to generate
+title = str(sys.argv[17])           # prefix for output file names                
+snapname = str(sys.argv[18])        # prefix for snapshot file names
 
+# example paramters
 # deme_size=100
 # mut_rate=0.6
 # adv_rate=0.1
@@ -793,9 +791,10 @@ snapname = str(sys.argv[17])        # prefix for snapshot file names
 # punch_diameter=3
 # puch_density=0.1
 # spacing=3
+# npub = 175 
 # title="example"
 # snapname="snap_example"
-
+          
 
 # Derived parameters for pushing and quiescence
 max_push = 2*rd*push_prop                   # maximum push distance in lattice units

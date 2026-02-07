@@ -17,11 +17,11 @@ The directory structure is as follows:
 
 ##### figure1-5
 
-- Description: These folders contains R scripts to generate plots used in the article. All data can be found in the `data` directory. You can reproduce the results by running these R scripts like `Rscript figure1.R`  .
+- Description: These folders contain R scripts to generate plots used in the article. All data can be found in the `data` directory. You can reproduce the results by running these R scripts like `Rscript figure1.R`  .
 
 ##### simulation
 
-Description: These folders contains python scripts to simulate deme-baed tumor. The simulation parameters and instructions for use can be found in the README file in this directory.
+Description: This folder contains python scripts to simulate deme-based tumor. The simulation parameters and instructions for use can be found in the README file in this directory.
 
 #### *Dependencies*
 
@@ -75,5 +75,5 @@ Python packages：
 
 #### *Data source*
 
-The dataset comprises 165 patients, including private sequencing data generated for this study (five HCC patients, DT42–DT51, and eight LUAD patients). The remaining 152 patients were collected from previously published cohorts, as listed in /data/fig1_patientID_clean.csv. For all 165 patients, VAF matrices are stored in /data/vaf_public_liver_lung, maximum parsimony trees are stored in /data/rds_public_liver_lung, and two-dimensional coordinate files are stored in fig2_public_liver_lung_loaction_absolute_nsr.csv.
+The dataset comprises 165 patients, including private sequencing data generated for this study (five HCC patients, DT42–DT51, and eight LUAD patients). The remaining 152 patients were collected from previously published cohorts, as listed in /data/fig1_patientID_clean.csv. For all 165 patients, VAF matrices are stored in /data/vaf_public_liver_lung, maximum parsimony trees are stored in /data/rds_public_liver_lung, and two-dimensional coordinate files are stored in /data/fig2_public_liver_lung_loaction_absolute_nsr.csv.
 

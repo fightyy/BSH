@@ -1,15 +1,17 @@
-library(tidyverse)
-library(this.path)
-library(adegenet)  # chooseCN, monmonier
-library(spdep)     # nb2listw/nb2mat（可选）
-library(graphics)  # plot
-library(ape)
-library(phangorn)
-library(ggpmisc)
-library(patchwork)
-library(spdep)
-library(adegenet)
-library(ggtree)
+suppressPackageStartupMessages({ 
+  library(tidyverse)
+  library(this.path)
+  library(adegenet)  
+  library(spdep)
+  library(graphics) 
+  library(ape)
+  library(phangorn)
+  library(ggpmisc)
+  library(patchwork)
+  library(spdep)
+  library(ggtree)
+})
+
 setwd(this.dir())
 source("../bin/theme_setup_simple.R")
 

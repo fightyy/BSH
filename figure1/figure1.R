@@ -1,8 +1,11 @@
-library(tidyverse)
-library(this.path)
-library(ggpubr)
-library(ggpmisc)
-library(car)
+suppressPackageStartupMessages({ 
+  library(tidyverse)
+  library(this.path)
+  library(ggpubr)
+  library(ggpmisc)
+  library(car)
+})  
+  
 setwd(this.dir())
 source("~/yy_application/R/bin/theme_setup_simple.R")
 
