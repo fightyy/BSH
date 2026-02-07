@@ -1,21 +1,21 @@
-# macOS 系统文件
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# R 语言历史记录 (看你有 .Rhistory，推测你可能在用 R)
+# R
 .Rhistory
 .RData
 .Ruserdata
 
-# IDE 配置文件夹 (JetBrains/PyCharm/RStudio 等)
+# IDE
 .idea/
 .vscode/
 *.swp
 
-# Python 缓存 (如果你有 Python 代码)
+# Python
 __pycache__/
 *.pyc
 
-# 这里的 .git 不需要写进去，Git 会自动忽略它自己的目录
+
 
