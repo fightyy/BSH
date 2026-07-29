@@ -155,12 +155,13 @@ p_dat <- compare_means(
   slope ~ tumor_type,
   data   = df_boxplot,
   method = "wilcox.test",
-  paired = FALSE
+  paired = FALSE,
+  p.adjust.method = "fdr"
 )
 
 #transfer p value into * 
 p_dat <- p_dat %>%
-  mutate(label = cut(p,
+  mutate(label = cut(p.adj,
                      breaks = c(-Inf, 0.0001, 0.001, 0.01, 0.05, Inf),
                      labels = c("****","***","**","*","ns")))
 

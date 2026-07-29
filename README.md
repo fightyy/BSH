@@ -1,6 +1,6 @@
 ### BSH
 
-This is the code for **Block-Shaped Heterogeneity as an Emergent Principle of Spatial Heterogeneity Across Human Solid Tumors**.
+This is the code for **Block-shaped heterogeneity as an emergent organizing principle of spatial heterogeneity across human solid tumors**.
 
 #### *Directory structure*
 
@@ -57,12 +57,14 @@ Running under: macOS Sonoma 14.6.1
 |terra            |1.7.78  |
 |this.path        |2.4.0   |
 |tidyverse        |2.0.0   |
+|glmmTMB          |1.1.11  |
+|IOBR             |2.2.2   |
 ```
 
 Python packages：
 
 ```python
-## Requirements
+## Python Dependencies for simulation
 - Python **3.x**
 - numpy
 - sys
@@ -75,5 +77,12 @@ Python packages：
 
 #### *Data source*
 
-The dataset comprises 165 patients, including private sequencing data generated for this study (five HCC patients, DT42–DT51, and eight LUAD patients). The remaining 152 patients were collected from previously published cohorts, as listed in /data/fig1_patientID_clean.csv. For all 165 patients, VAF matrices are stored in /data/vaf_public_liver_lung, maximum parsimony trees are stored in /data/rds_public_liver_lung, and two-dimensional coordinate files are stored in /data/fig2_public_liver_lung_loaction_absolute_nsr.csv.
+The dataset comprises 165 patients, including private sequencing data generated for this study (five HCC patients, DT42–DT51, and eight LUAD patients). The remaining 152 patients were collected from previously published cohorts, as listed in /data/fig1_patientID_clean.csv. For all 165 patients, VAF matrices are stored in /data/vaf_public_liver_lung_final, maximum parsimony trees are stored in /data/rds_public_liver_lung_final, and two-dimensional coordinate files are stored in /data/fig2_public_liver_lung_location_absolute_nsr_1169_final.csv.
 
+#### License
+
+The source code in this repository is licensed under the GNU General Public License v3.0. See the `LICENSE.txt` file.
+
+Original data, metadata, documentation, and other non-software materials produced for this study are licensed under the Creative Commons Attribution 4.0 International License. See `LICENSE-DATA.txt`.
+
+Data obtained or derived from previously published cohorts remain subject to the licensing and reuse conditions of their original sources.

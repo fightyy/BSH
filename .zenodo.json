@@ -1,0 +1,22 @@
+{
+  "title": "BSH: Code and curated data for Block-shaped heterogeneity as an emergent organizing principle of spatial heterogeneity across human solid tumors",
+  "description": "Analysis code, curated data files, and deme-based simulation scripts associated with the manuscript \"Block-shaped heterogeneity as an emergent organizing principle of spatial heterogeneity across human solid tumors\". The source code is licensed under the GNU General Public License v3.0. Original data, metadata, documentation, and other non-software materials produced for this study are licensed under the Creative Commons Attribution 4.0 International license, unless otherwise stated. Data obtained or derived from previously published cohorts remain subject to the terms and conditions of their original sources.",
+  "creators": [
+    {
+      "name": "Yang, Yue",
+      "affiliation": "Institute of Zoology, Chinese Academy of Sciences",
+      "orcid": "0009-0007-7284-114X"
+    }
+  ],
+  "version": "1.0.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "gpl-3.0-only",
+  "language": "eng",
+  "keywords": [
+    "spatial tumor heterogeneity",
+    "intratumor heterogeneity",
+    "block-shaped heterogeneity",
+    "deme-based simulation"
+  ]
+}

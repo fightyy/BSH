@@ -551,7 +551,6 @@ df1 <- df %>%
   )
 df_center_edge <- read_csv("../data/fig5_result_center_edge_all0.25.csv") %>% dplyr::select(location, sample)
 df_all <- df1 %>% left_join(df_center_edge, by=c("Punch"="sample")) %>% dplyr::select(mobster_result, patient, Punch, location)
-df_long_plot <- df_long %>% filter(input_type %in% c("ccf_mean")) %>% mutate(boundary=ifelse( boundary == "Boundary", "block boundary", "block interior"))
 df_prop <- df_all %>%
   group_by(patient, location) %>%
   summarise(

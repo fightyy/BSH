@@ -263,7 +263,8 @@ p <- ggplot(small_df, aes(x = migrate_rate, y = value)) +
     method.args = list(exact = FALSE),
     label = "p.signif",
     size = 7/.pt,
-    label.y = label_y
+    label.y = label_y,
+    p.adjust.method = "fdr"
   ) +
   labs(
     x = "Migration rate",
@@ -283,7 +284,7 @@ p <- ggplot(small_df, aes(x = migrate_rate, y = value)) +
     plot.margin = margin(0.1, 0, 0, 0, "cm")
   ) +
   coord_cartesian(ylim = c(y_min, max(label_y) + step))
-ggsave("figure4d.pdf", units="cm", width=3.5, height=5)
+ggsave("figure4d.pdf", units="cm", width=5, height=5)
 
 
 ##figure4e----
@@ -314,7 +315,8 @@ p <- ggplot(small_df, aes(x = migrate_rate, y = silhouette_mean)) +
     method = "wilcox.test",
     method.args = list(exact = FALSE),
     label = "p.signif",
-    size = 7/.pt
+    size = 7/.pt,
+    p.adjust.method = "fdr"
   ) +
   labs(
     x = "Migration rate",
@@ -340,11 +342,11 @@ ggsave("figure4e.pdf", units="cm", width=3.5, height=5)
 #GO enrichment of the differentially expressed genes between HCC tumors with high ENNmn values (weak blockness) and low ENNmn values (strong blockness)
 df_enrich <- read_csv("../data/fig4_go_enrich.csv") %>% mutate(score = abs(score))
 df_enrich_sorted <- df_enrich[order(df_enrich$score, decreasing = FALSE), ]
-top5_up <- df_enrich[df_enrich$direction == "Up", ] |>
-  dplyr::arrange(pvalue) |>
+top5_up <- df_enrich[df_enrich$direction == "Up", ] %>% 
+  dplyr::arrange(pvalue) %>% 
   head(3)
-top5_down <- df_enrich[df_enrich$direction == "Down", ] |>
-  dplyr::arrange(pvalue) |>
+top5_down <- df_enrich[df_enrich$direction == "Down", ] %>% 
+  dplyr::arrange(pvalue) %>% 
   head(3)
 df_enrich_plot <-  rbind(top5_down, top5_up) %>%
   mutate(Description_wrap = str_wrap(Description, width = 39)) %>%
@@ -645,7 +647,8 @@ p <- ggplot(df_boxplot_all, aes(x = tumor_type, y = edge_center_ratio, fill = tu
     paired = FALSE,
     label = "p.signif",
     size = 6/.pt,
-    label.y = label_y
+    label.y = label_y,
+    p.adjust.method = "fdr"
   ) +
   labs(x = NULL, y = "Mutation ratio (edge vs center)") +
   my_theme() +
@@ -659,7 +662,7 @@ ggsave("figure4k.pdf",unit="cm", width=5, height=5,dpi = 300)
 
 #figure4l----
 #The ITH ratio between the edge vs central areas for the simulated tumors as well as real tumors
-df <- read_csv("../data/fig4_real_data_center_edge_ITH.csv")
+df <- read_csv("../data/fig4_real_ITH_corrected_center_edge.csv")
 
 #real
 tumor_dict <- setNames(
@@ -702,7 +705,8 @@ p_dat <- ggpubr::compare_means(
   data    = df_boxplot_all,
   method  = "wilcox.test",
   paired  = FALSE,
-  ref.group = "Simulation"
+  ref.group = "Simulation",
+  p.adjust.method = "fdr"
 ) %>%
   dplyr::filter(group2 %in% vapply(comparisons_list, `[[`, "", 2)) %>%
   dplyr::arrange(match(group2, vapply(comparisons_list, `[[`, "", 2))) %>%

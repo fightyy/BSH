@@ -394,7 +394,8 @@ p <- ggplot(df_plot, aes(x = adv_group, y = silhouette_mean)) +
     ),
     method = "wilcox.test",
     label = "p.signif",
-    size = 6/.pt
+    size = 6/.pt,
+    p.adjust.method = "fdr"
   ) +
   scale_x_discrete(labels = c(
     "neutral"  = "Neutral",
@@ -469,7 +470,8 @@ plot_all <- ggplot(df_all, aes(x = push_prop, y = silhouette_mean)) +
     method.args = list(exact = FALSE),
     label = "p.signif",
     size = 5/.pt,
-    label.y = label_y
+    label.y = label_y,
+    p.adjust.method = "fdr"
   ) +
   labs(x = "Push power", y = "Silhouette value") +
   my_theme() +

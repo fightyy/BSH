@@ -10,6 +10,7 @@ suppressPackageStartupMessages({
   library(patchwork)
   library(spdep)
   library(ggtree)
+  library(ggpubr)
 })
 
 setwd(this.dir())
@@ -26,7 +27,8 @@ patient_cancer <- "liver_cancer_DT10"
 relative_thresh<- 0.8
 #read boundary data
 boundary_df <- read_csv(paste0("../data/fig2_monmonier_out_two_path/", patient_cancer, "_", relative_thresh, "_monmonier_result.csv"))
-
+#corrected ITH directory (corrected for purity or coverage)
+corrected_ith_dir <- "../data/fig2_ITH_public_liver_lung_corrected"
 # Color palette used for tree and spatial plots
 tree_color <- c("#F8766D","#00BFC4","#C77CFF","#7CAE00","#3288BD", "#FFFFBF","#FDAE61", "#9E0142","#5E4FA2")
 colormap=rev(RColorBrewer::brewer.pal(11,'Spectral'))
@@ -38,13 +40,25 @@ tumor_type <- paste0(patient_tumor_vec[[1]][1],"_cancer")
 patient <- patient_tumor_vec[[1]][3]
 
 # Read spatial coordinates of bulk samples (absolute, non-size-normalised)
-location <- read_csv("../data/fig2_public_liver_lung_loaction_absolute_nsr.csv") %>% filter(Patient==patient, Tumor_type==tumor_type) %>%
+location <- read_csv("../data/fig2_public_liver_lung_location_absolute_nsr_1169_final.csv") %>% filter(Patient == patient_cancer, Tumor_type == tumor_type) %>%
   dplyr::select(Sample, X, Y ) %>% dplyr::rename(x=X, y=Y, sample=Sample)  %>% mutate(z=0)
 r <- max(max(location$x)-min(location$x), max(location$y)-min(location$y))/2
 
 # Read VAF matrix for this patient
-mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung/", patient_cancer, "_vaf.csv"))
+mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung_final/", patient_cancer, "_vaf.csv"))
+prefix <- paste0(patient_cancer, "_")
+mutation_code <- mutation_code %>% 
+  rename_with(
+    .fn = ~ str_remove(.x, fixed(prefix)),
+    .cols = everything()
+  )
 mutation_code <- mutation_code %>% dplyr::select(-"mut_id")
+prefix <- paste0(patient_cancer, "_")
+mutation_code <- mutation_code %>% 
+  rename_with(
+    .fn = ~ str_remove(.x, fixed(prefix)),
+    .cols = everything()
+  )
 # Use only samples that appear in both mutation matrix and location table
 sample_names <- intersect(colnames(mutation_code), location$sample)
 sample_names <- sample_names[sample_names != "NU"]
@@ -55,7 +69,7 @@ mutation_code = mutation_code > 0
 storage.mode(mutation_code) = "numeric"
 phy_data=mutation_code %>% t() %>% phangorn::phyDat(type="USER", levels=c(0,1))
 #get tree file
-rpar = readRDS(paste0("../data/rds_public_liver_lung/",patient_cancer, "_tree.rds"))
+rpar = readRDS(paste0("../data/rds_public_liver_lung_final/",patient_cancer, "_tree.rds"))
 
 # Get best clustering based on CH index
 genetic_cluster <- get_CH_index(rpar)
@@ -75,14 +89,26 @@ for(sample_ in sample_names){
 }
 cluster_num <- length(unique(loc_genetic_cluster$cluster))
 
-# Compute continuous ITH surface across tumor
+# Read corrected ITH matrix
 select_info <- loc_genetic_cluster[c("X","Y")]
-ITH_matrix <- get_ITH_matrix(phy_data,select_info,r)
+corrected_ith_file <- file.path(corrected_ith_dir, paste0(patient_cancer, "_ITH.csv"))
+ITH_matrix <- read_csv(corrected_ith_file, show_col_types = FALSE)
+ITH_matrix <- ITH_matrix %>%
+  mutate(
+    x = as.numeric(x),
+    y = as.numeric(y),
+    ITH_corrected = as.numeric(ITH_corrected),
+    ITH = ITH_corrected
+  ) %>%
+  filter(!is.na(ITH))
+
+
 print("###### ITH matirx finished ######")
 
 # Random subsampling of ITH grid points weighted by ITH value
 set.seed(123)
 ITH <- ITH_matrix$ITH
+ITH_prob <- pmin(pmax(ITH, 0), 1)
 temp_order <- c()
 for (n in 1:length(ITH)){
   if (sample(c(0,1),1,prob=c(1-ITH[n],ITH[n]))==1){
@@ -144,13 +170,12 @@ ITH_plot <- p1 +
     legend.box.margin = margin(t = -0.2, unit = "cm"),
     plot.margin = margin(t = 0.1, unit = 'cm'))
 
-ggsave("figure1a.pdf", width=6, height=5, unit="cm", dpi = 300 )
+ggsave("figure2a.pdf", width=6, height=5, unit="cm", dpi = 300 )
 
 
 
 ##figure2b----
 #Spatial distribution of tumor boundaries in DT13
-
 #code comment see figure2a
 patient_cancer <- "liver_cancer_DT13"
 relative_thresh<- 0.5
@@ -160,11 +185,17 @@ colormap=rev(RColorBrewer::brewer.pal(11,'Spectral'))
 patient_tumor_vec <- strsplit( patient_cancer, "_")
 tumor_type <- paste0(patient_tumor_vec[[1]][1],"_cancer")
 patient <- patient_tumor_vec[[1]][3]
-location <- read_csv("../data/fig2_public_liver_lung_loaction_absolute_nsr.csv") %>% filter(Patient==patient, Tumor_type==tumor_type) %>%
+location <- read_csv("../data/fig2_public_liver_lung_location_absolute_nsr_1169_final.csv") %>% filter(Patient == patient_cancer, Tumor_type == tumor_type) %>%
   dplyr::select(Sample, X, Y ) %>% dplyr::rename(x=X, y=Y, sample=Sample)  %>% mutate(z=0)
 r <- max(max(location$x)-min(location$x), max(location$y)-min(location$y))/2
-mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung/", patient_cancer, "_vaf.csv"))
+mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung_final/", patient_cancer, "_vaf.csv"))
 mutation_code <- mutation_code %>% dplyr::select(-"mut_id")
+prefix <- paste0(patient_cancer, "_")
+mutation_code <- mutation_code %>% 
+  rename_with(
+    .fn = ~ str_remove(.x, fixed(prefix)),
+    .cols = everything()
+  )
 sample_names <- intersect(colnames(mutation_code), location$sample)
 sample_names <- sample_names[sample_names != "NU"]
 mutation_code <- mutation_code[,sample_names]
@@ -172,7 +203,7 @@ mutation_code$GL <- 0
 mutation_code = mutation_code > 0
 storage.mode(mutation_code) = "numeric"
 phy_data=mutation_code %>% t() %>% phangorn::phyDat(type="USER", levels=c(0,1))
-rpar = readRDS(paste0("../data/rds_public_liver_lung/",patient_cancer, "_tree.rds"))
+rpar = readRDS(paste0("../data/rds_public_liver_lung_final/",patient_cancer, "_tree.rds"))
 genetic_cluster <- get_CH_index(rpar)
 loc_genetic_cluster <- data.frame()
 for(sample_ in sample_names){
@@ -186,13 +217,28 @@ for(sample_ in sample_names){
   loc_genetic_cluster <- rbind(loc_genetic_cluster, small_df)
 }
 cluster_num <- length(unique(loc_genetic_cluster$cluster))
-
 select_info <- loc_genetic_cluster[c("X","Y")]
-ITH_matrix <- get_ITH_matrix(phy_data,select_info,r)
+
+# Read corrected ITH matrix
+select_info <- loc_genetic_cluster[c("X","Y")]
+corrected_ith_file <- file.path(corrected_ith_dir, paste0(patient_cancer, "_ITH.csv"))
+ITH_matrix <- read_csv(corrected_ith_file, show_col_types = FALSE)
+ITH_matrix <- ITH_matrix %>%
+  mutate(
+    x = as.numeric(x),
+    y = as.numeric(y),
+    ITH_corrected = as.numeric(ITH_corrected),
+    ITH = ITH_corrected
+  ) %>%
+  filter(!is.na(ITH))
+
+
 print("###### ITH matirx finished ######")
 
+# Random subsampling of ITH grid points weighted by ITH value
 set.seed(123)
 ITH <- ITH_matrix$ITH
+ITH_prob <- pmin(pmax(ITH, 0), 1)
 temp_order <- c()
 for (n in 1:length(ITH)){
   if (sample(c(0,1),1,prob=c(1-ITH[n],ITH[n]))==1){
@@ -262,11 +308,17 @@ colormap=rev(RColorBrewer::brewer.pal(11,'Spectral'))
 patient_tumor_vec <- strsplit( patient_cancer, "_")
 tumor_type <- paste0(patient_tumor_vec[[1]][1],"_cancer")
 patient <- patient_tumor_vec[[1]][3]
-location <- read_csv("../data/fig2_public_liver_lung_loaction_absolute_nsr.csv") %>% filter(Patient==patient, Tumor_type==tumor_type) %>%
+location <- read_csv("../data/fig2_public_liver_lung_location_absolute_nsr_1169_final.csv") %>% filter(Patient == patient_cancer, Tumor_type == tumor_type) %>%
   dplyr::select(Sample, X, Y ) %>% dplyr::rename(x=X, y=Y, sample=Sample)  %>% mutate(z=0)
 r <- max(max(location$x)-min(location$x), max(location$y)-min(location$y))/2
-mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung/", patient_cancer, "_vaf.csv"))
+mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung_final/", patient_cancer, "_vaf.csv"))
 mutation_code <- mutation_code %>% dplyr::select(-"mut_id")
+prefix <- paste0(patient_cancer, "_")
+mutation_code <- mutation_code %>% 
+  rename_with(
+    .fn = ~ str_remove(.x, fixed(prefix)),
+    .cols = everything()
+  )
 sample_names <- intersect(colnames(mutation_code), location$sample)
 sample_names <- sample_names[sample_names != "NU"]
 mutation_code <- mutation_code[,sample_names]
@@ -274,7 +326,7 @@ mutation_code$GL <- 0
 mutation_code = mutation_code > 0
 storage.mode(mutation_code) = "numeric"
 phy_data=mutation_code %>% t() %>% phangorn::phyDat(type="USER", levels=c(0,1))
-rpar = readRDS(paste0("../data/rds_public_liver_lung/",patient_cancer, "_tree.rds"))
+rpar = readRDS(paste0("../data/rds_public_liver_lung_final/",patient_cancer, "_tree.rds"))
 genetic_cluster <- get_CH_index(rpar)
 
 loc_genetic_cluster <- data.frame()
@@ -291,11 +343,27 @@ for(sample_ in sample_names){
 cluster_num <- length(unique(loc_genetic_cluster$cluster))
 
 select_info <- loc_genetic_cluster[c("X","Y")]
-ITH_matrix <- get_ITH_matrix(phy_data,select_info,r)
+
+# Read corrected ITH matrix
+select_info <- loc_genetic_cluster[c("X","Y")]
+corrected_ith_file <- file.path(corrected_ith_dir, paste0(patient_cancer, "_ITH.csv"))
+ITH_matrix <- read_csv(corrected_ith_file, show_col_types = FALSE)
+ITH_matrix <- ITH_matrix %>%
+  mutate(
+    x = as.numeric(x),
+    y = as.numeric(y),
+    ITH_corrected = as.numeric(ITH_corrected),
+    ITH = ITH_corrected
+  ) %>%
+  filter(!is.na(ITH))
+
+
 print("###### ITH matirx finished ######")
 
+# Random subsampling of ITH grid points weighted by ITH value
 set.seed(123)
 ITH <- ITH_matrix$ITH
+ITH_prob <- pmin(pmax(ITH, 0), 1)
 temp_order <- c()
 for (n in 1:length(ITH)){
   if (sample(c(0,1),1,prob=c(1-ITH[n],ITH[n]))==1){
@@ -336,7 +404,7 @@ scale_width <- 30
 p1 <- ggtree(trs) +
   geom_tippoint(aes(color = group), shape = 16, size = 10/.pt) +
   geom_text2(aes(label=gsub("DT10_", "", sample)),size=4/.pt,color="white")+
-  geom_treESCCle(x = xmax - scale_width, y = 3, width = scale_width, fontsize = 6/.pt)+
+  geom_treescale(x = xmax - scale_width, y = 3, width = scale_width, fontsize = 6/.pt)+
   scale_color_manual(values = tree_color, name="Genetic class")+
   geom_rootedge(rootedge = rpar$edge.length[length(rpar$edge.length)]) +
   coord_cartesian(clip = 'off') +
@@ -357,7 +425,7 @@ ggsave("figure2d.pdf", unit="cm", width=5, height=5,dpi = 300)
 
 
 
-###figure2e-2f
+###figure2e-2f----
 # figure2e:Maximum parsimony tree constructed from somatic mutations discovered in sectors of DT13
 # figure2f:Two-dimensional spatial distribution of tumor sectors in DT13
 patient_cancer <- "liver_cancer_DT13"
@@ -366,11 +434,17 @@ colormap=rev(RColorBrewer::brewer.pal(11,'Spectral'))
 patient_tumor_vec <- strsplit( patient_cancer, "_")
 tumor_type <- paste0(patient_tumor_vec[[1]][1],"_cancer")
 patient <- patient_tumor_vec[[1]][3]
-location <- read_csv("../data/fig2_public_liver_lung_loaction_absolute_nsr.csv") %>% filter(Patient==patient, Tumor_type==tumor_type) %>%
+location <- read_csv("../data/fig2_public_liver_lung_location_absolute_nsr_1169_final.csv") %>% filter(Patient == patient_cancer, Tumor_type == tumor_type) %>%
   dplyr::select(Sample, X, Y ) %>% dplyr::rename(x=X, y=Y, sample=Sample)  %>% mutate(z=0)
 r <- max(max(location$x)-min(location$x), max(location$y)-min(location$y))/2
-mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung/", patient_cancer, "_vaf.csv"))
+mutation_code <- read_csv(paste0("../data/vaf_public_liver_lung_final/", patient_cancer, "_vaf.csv"))
 mutation_code <- mutation_code %>% dplyr::select(-"mut_id")
+prefix <- paste0(patient_cancer, "_")
+mutation_code <- mutation_code %>% 
+  rename_with(
+    .fn = ~ str_remove(.x, fixed(prefix)),
+    .cols = everything()
+  )
 sample_names <- intersect(colnames(mutation_code), location$sample)
 sample_names <- sample_names[sample_names != "NU"]
 mutation_code <- mutation_code[,sample_names]
@@ -378,7 +452,7 @@ mutation_code$GL <- 0
 mutation_code = mutation_code > 0
 storage.mode(mutation_code) = "numeric"
 phy_data=mutation_code %>% t() %>% phangorn::phyDat(type="USER", levels=c(0,1))
-rpar = readRDS(paste0("../data/rds_public_liver_lung/",patient_cancer, "_tree.rds"))
+rpar = readRDS(paste0("../data/rds_public_liver_lung_final/",patient_cancer, "_tree.rds"))
 genetic_cluster <- get_CH_index(rpar)
 
 loc_genetic_cluster <- data.frame()
@@ -395,11 +469,27 @@ for(sample_ in sample_names){
 cluster_num <- length(unique(loc_genetic_cluster$cluster))
 
 select_info <- loc_genetic_cluster[c("X","Y")]
-ITH_matrix <- get_ITH_matrix(phy_data,select_info,r)
+
+# Read corrected ITH matrix
+select_info <- loc_genetic_cluster[c("X","Y")]
+corrected_ith_file <- file.path(corrected_ith_dir, paste0(patient_cancer, "_ITH.csv"))
+ITH_matrix <- read_csv(corrected_ith_file, show_col_types = FALSE)
+ITH_matrix <- ITH_matrix %>%
+  mutate(
+    x = as.numeric(x),
+    y = as.numeric(y),
+    ITH_corrected = as.numeric(ITH_corrected),
+    ITH = ITH_corrected
+  ) %>%
+  filter(!is.na(ITH))
+
+
 print("###### ITH matirx finished ######")
 
+# Random subsampling of ITH grid points weighted by ITH value
 set.seed(123)
 ITH <- ITH_matrix$ITH
+ITH_prob <- pmin(pmax(ITH, 0), 1)
 temp_order <- c()
 for (n in 1:length(ITH)){
   if (sample(c(0,1),1,prob=c(1-ITH[n],ITH[n]))==1){
@@ -407,6 +497,9 @@ for (n in 1:length(ITH)){
   }
 }
 all_point_ITH <- ITH_matrix[temp_order,]
+
+
+
 p1 <- ggplot(all_point_ITH, aes(x = x, y = y)) +
   stat_density_2d(geom = "raster",aes(fill = ..ndensity..),contour = F)+
   labs(fill="ITH")+
@@ -439,7 +532,7 @@ scale_width <- 30
 p1 <- ggtree(trs) +
   geom_tippoint(aes(color = group), shape = 16, size = 10/.pt) +
   geom_text2(aes(label=gsub("DT13_", "", sample)),size=4/.pt,color="white")+
-  geom_treESCCle(x = xmax - scale_width, y = 3, width = scale_width, fontsize = 6/.pt)+
+  geom_treescale(x = xmax - scale_width, y = 3, width = scale_width, fontsize = 6/.pt)+
   scale_color_manual(values = tree_color, name="Genetic class")+
   geom_rootedge(rootedge = rpar$edge.length[length(rpar$edge.length)]) +
   coord_cartesian(clip = 'off') +
@@ -560,14 +653,17 @@ p_dat <- compare_means(
   silhouette_mean ~ tumor_type,
   data   = df_boxplot,
   method = "wilcox.test",
-  paired = FALSE
+  paired = FALSE,
+  p.adjust.method = "fdr"
 )
+
 p_dat <- p_dat %>%
   mutate(label = cut(
-    p,
+    p.adj,
     breaks = c(-Inf, 0.0001, 0.001, 0.01, 0.05, Inf),
     labels = c("****","***","**","*","ns")
   ))
+
 # Only retain the comparisons with significant differences
 p_dat <- p_dat %>% filter(label != "ns")
 order_g1 <- vapply(comparisons_list, `[[`, "", 1)
