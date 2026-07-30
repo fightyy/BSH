@@ -25,7 +25,7 @@ Description: This folder contains python scripts to simulate deme-based tumor. T
 
 #### *Dependencies*
 
-R ：
+R:
 
 ```R
 ### R Dependencies
@@ -65,7 +65,7 @@ Python：
 
 ```python
 ### Python Dependencies for simulation
-- Python 3.x
+Python version 3.x
 - numpy
 - sys
 - math
