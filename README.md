@@ -28,10 +28,10 @@ Description: This folder contains python scripts to simulate deme-based tumor. T
 R packages：
 
 ```R
+### R Dependencies
 R version 4.3.1 (2023-06-16)
 Platform: aarch64-apple-darwin20 (64-bit)
 Running under: macOS Sonoma 14.6.1
-### R Dependencies
 |Package          |Version |
 |:----------------|:-------|
 |adegenet         |2.1.10  |
