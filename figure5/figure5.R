@@ -70,7 +70,7 @@ attr(phy_data, "id") = rownames(mutated)
 
 rpar = readRDS(paste0("../data/csv_example/", title, "_tree.rds"))
 
-#Get best clustering based on CH index获取最佳分组
+#Get best clustering based on CH index
 genetic_cluster <- get_CH_index(rpar)
 
 # Map cluster labels to spatial coordinates of bulk samples
@@ -127,7 +127,7 @@ space_plot <-  ggplot()+
   geom_text(data = loc_genetic_cluster,aes(x=X,y=Y,label=rownames(loc_genetic_cluster)),size=5/.pt)+
   scale_fill_manual(
     values = clone_colors,
-    labels = c("1" = "Neutral", "2" = "Selected")  # 重命名图例标签
+    labels = c("1" = "Neutral", "2" = "Selected") 
   ) +
   labs(fill = "Deme", title="Tumor (selected)",x=NULL, y=NULL) +
   coord_fixed()+

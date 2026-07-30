@@ -641,7 +641,6 @@ df_boxplot <-  df %>%
       prostate_cancer         = "PCa",
       liver_cancer            = "HCC"
     ),
-    # 如果你还想保证画图时按照这个顺序出现：
     tumor_type = factor(
       tumor_type,
       levels = c("HCC", "LUAD", "CRC", "ESCC", "GOA", "BLCA", "PCa", "Panc-NEC",  "GC")

@@ -710,7 +710,6 @@ p_dat <- ggpubr::compare_means(
 ) %>%
   dplyr::filter(group2 %in% vapply(comparisons_list, `[[`, "", 2)) %>%
   dplyr::arrange(match(group2, vapply(comparisons_list, `[[`, "", 2))) %>%
-  # 手动转成星号
   dplyr::mutate(
     label = cut(p.adj,
                 breaks = c(-Inf, 0.0001, 0.001, 0.01, 0.05, Inf),

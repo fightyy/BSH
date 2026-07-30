@@ -1,6 +1,6 @@
 ### BSH
 
-This is the code for **Block-shaped heterogeneity as an emergent organizing principle of spatial heterogeneity across human solid tumors**.
+This is the code for **block-shaped heterogeneity as an emergent organizing principle of spatial heterogeneity across human solid tumors**.
 
 #### *Directory structure*
 
@@ -17,7 +17,7 @@ The directory structure is as follows:
 
 ##### figure1-5
 
-- Description: These folders contain R scripts to generate plots used in the article. All data can be found in the `data` directory. You can reproduce the results by running these R scripts like `Rscript figure1.R`  .
+- Description: These folders contain R scripts to generate main plots in the article. All data can be found in the `data` directory. You can reproduce the results by running these R scripts like `Rscript figure1.R`  .
 
 ##### simulation
 
@@ -64,7 +64,7 @@ Running under: macOS Sonoma 14.6.1
 Python packages：
 
 ```python
-## Python Dependencies for simulation
+### Python Dependencies for simulation
 - Python **3.x**
 - numpy
 - sys
@@ -79,7 +79,7 @@ Python packages：
 
 The dataset comprises 165 patients, including private sequencing data generated for this study (five HCC patients, DT42–DT51, and eight LUAD patients). The remaining 152 patients were collected from previously published cohorts, as listed in /data/fig1_patientID_clean.csv. For all 165 patients, VAF matrices are stored in /data/vaf_public_liver_lung_final, maximum parsimony trees are stored in /data/rds_public_liver_lung_final, and two-dimensional coordinate files are stored in /data/fig2_public_liver_lung_location_absolute_nsr_1169_final.csv.
 
-#### License
+#### *License*
 
 The source code in this repository is licensed under the GNU General Public License v3.0. See the `LICENSE.txt` file.
 

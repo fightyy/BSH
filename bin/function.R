@@ -40,7 +40,7 @@ get_tree <- function(rpar,patient_SH,group){
   trs <- full_join(rpar1,annotation,by='label')
   p1 <- ggtree(trs) + 
     geom_tippoint(aes(color=group),shape=16,size=20/.pt)+
-    geom_treescale(x = -50, y = 0 , width = 50) + #控制tree的标尺位置
+    geom_treescale(x = -50, y = 0 , width = 50) + 
     geom_text2(aes(label=sample),size=8/.pt,color="white")+
     scale_color_manual(values = tree_color, name="class")+
     geom_rootedge(rootedge = rpar$edge.length[length(rpar$edge.length)]) +

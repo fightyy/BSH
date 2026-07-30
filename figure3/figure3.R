@@ -308,7 +308,7 @@ space_plot <-  ggplot()+
   geom_text(data = loc_genetic_cluster,aes(x=X,y=Y,label=rownames(loc_genetic_cluster)),size=5/.pt)+
   scale_fill_manual(
     values = clone_colors,
-    labels = c("1" = "Neutral", "2" = "Selected")  # 重命名图例标签
+    labels = c("1" = "Neutral", "2" = "Selected") 
   ) +
   labs(fill = "Deme", title=paste0("Tumor (", "selected", ")"), x=NULL, y=NULL) +
   coord_fixed()+
