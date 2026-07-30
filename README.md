@@ -65,7 +65,7 @@ Python packages：
 
 ```python
 ### Python Dependencies for simulation
-- Python **3.x**
+- Python 3.x
 - numpy
 - sys
 - math
