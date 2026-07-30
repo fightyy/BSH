@@ -25,7 +25,7 @@ Description: This folder contains python scripts to simulate deme-based tumor. T
 
 #### *Dependencies*
 
-R packages：
+R ：
 
 ```R
 ### R Dependencies
@@ -61,7 +61,7 @@ Running under: macOS Sonoma 14.6.1
 |IOBR             |2.2.2   |
 ```
 
-Python packages：
+Python：
 
 ```python
 ### Python Dependencies for simulation
