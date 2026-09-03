@@ -88,7 +88,7 @@ The installation time depends on the existing software environment, operating sy
 
 #### *Runtime*
 
-The demo simulation runtime is less than 1 minute on a standard desktop computer.
+The simulation demo runtime is less than 1 minute on a standard desktop computer.
 
 #### *Data source*
 
