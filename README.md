@@ -80,15 +80,15 @@ sys, math, random, heapq, subprocess, and collections.
 
 #### *Installation*
 
-No compilation or installation of the source code is required.
+No compilation or installation of the source code is required. 
 
-The R analysis scripts and Python simulation scripts can be executed directly after installing the required dependencies listed above using standard package installation procedures.
+The required dependencies can be installed using standard package installation procedures.
 
 The installation time depends on the existing software environment, operating system and internet connection.
 
 #### *Runtime*
 
-Typical runtime for the simulation demo execution is less than 1 minute on a standard desktop computer. 
+The demo simulation runtime is less than 1 minute on a standard desktop computer.
 
 #### *Data source*
 
