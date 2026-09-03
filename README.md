@@ -84,11 +84,11 @@ No compilation or installation of the source code is required.
 
 The R analysis scripts and Python simulation scripts can be executed directly after installing the required dependencies listed above using standard package installation procedures.
 
-The installation time depends on the existing software environment, operating system, and internet connection.
+The installation time depends on the existing software environment, operating system and internet connection.
 
 #### *Runtime*
 
-Typical runtime for a Python simulation demo execution is less than 1 minute on a standard desktop computer. 
+Typical runtime for the simulation demo execution is less than 1 minute on a standard desktop computer. 
 
 #### *Data source*
 
@@ -96,8 +96,4 @@ The dataset comprises 165 patients, including private sequencing data generated 
 
 #### *License*
 
-The source code in this repository is licensed under the GNU General Public License v3.0. See the `LICENSE.txt` file.
-
-Original data, metadata, documentation, and other non-software materials produced for this study are licensed under the Creative Commons Attribution 4.0 International License. See `LICENSE-DATA.txt`.
-
-Data obtained or derived from previously published cohorts remain subject to the licensing and reuse conditions of their original sources.
+The source code in this repository is licensed under the GNU General Public License v3.0. See the `LICENSE.txt` file. Original data, metadata, documentation, and other non-software materials produced for this study are licensed under the Creative Commons Attribution 4.0 International License. See `LICENSE-DATA.txt`. Data obtained or derived from previously published cohorts remain subject to the licensing and reuse conditions of their original sources.
