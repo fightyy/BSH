@@ -21,59 +21,74 @@ The directory structure is as follows:
 
 ##### simulation
 
-Description: This folder contains python scripts to simulate deme-based tumor. The simulation parameters and instructions for use can be found in the README file in this directory.
+Description: This folder contains python scripts to simulate deme-based tumor. The simulation parameters, instructions for use and expected output can be found in the README file in this directory.
 
-#### *Dependencies*
+#### *System requirements and dependencies*
 
-R:
+The code was developed and tested on the following environment:
 
-```R
-### R Dependencies
-R version 4.3.1 (2023-06-16)
-Platform: aarch64-apple-darwin20 (64-bit)
-Running under: macOS Sonoma 14.6.1
-|Package          |Version |
-|:----------------|:-------|
-|adegenet         |2.1.10  |
-|ape              |5.7.1   |
-|car              |3.1.2   |
-|cowplot          |1.1.3   |
-|GET              |1.0.4   |
-|ggplot2          |3.5.2   |
-|ggpmisc          |0.5.5   |
-|ggpubr           |0.6.0   |
-|ggtext           |0.1.2   |
-|ggtree           |3.10.1  |
-|graphics         |4.3.1   |
-|ks               |1.14.2  |
-|landscapemetrics |2.2.1   |
-|mobster          |1.0.0   |
-|patchwork        |1.2.0   |
-|phangorn         |2.11.1  |
-|purrr            |1.0.2   |
-|raster           |3.6.26  |
-|spatstat         |3.3.0   |
-|spdep            |1.3.13  |
-|terra            |1.7.78  |
-|this.path        |2.4.0   |
-|tidyverse        |2.0.0   |
-|glmmTMB          |1.1.11  |
-|IOBR             |2.2.2   |
-```
+- macOS Sonoma 14.6.1
+- R version 4.3.1 
+- Platform: aarch64-apple-darwin20 (64-bit)
 
-Python：
+No non-standard hardware is required. The analyses can be performed on a standard desktop computer.
 
-```python
-### Python Dependencies for simulation
-Python version 3.x
-- numpy
-- sys
-- math
-- random
-- heapq
-- subprocess
-- collections
-```
+##### R dependencies
+
+The following R packages are required:
+
+| Package          | Version |
+| :--------------- | :------ |
+| adegenet         | 2.1.10  |
+| ape              | 5.7.1   |
+| car              | 3.1.2   |
+| cowplot          | 1.1.3   |
+| GET              | 1.0.4   |
+| ggplot2          | 3.5.2   |
+| ggpmisc          | 0.5.5   |
+| ggpubr           | 0.6.0   |
+| ggtext           | 0.1.2   |
+| ggtree           | 3.10.1  |
+| graphics         | 4.3.1   |
+| ks               | 1.14.2  |
+| landscapemetrics | 2.2.1   |
+| mobster          | 1.0.0   |
+| patchwork        | 1.2.0   |
+| phangorn         | 2.11.1  |
+| purrr            | 1.0.2   |
+| raster           | 3.6.26  |
+| spatstat         | 3.3.0   |
+| spdep            | 1.3.13  |
+| terra            | 1.7.78  |
+| this.path        | 2.4.0   |
+| tidyverse        | 2.0.0   |
+| glmmTMB          | 1.1.11  |
+| IOBR             | 2.2.2   |
+
+##### Python dependencies
+
+The simulation code was developed and tested with Python 3.x.
+
+External Python packages required:
+
+| Package | Version |
+| :------ | :------ |
+| numpy   | 1.24.3  |
+
+The simulation scripts also use Python standard library modules:
+sys, math, random, heapq, subprocess, and collections.
+
+#### *Installation*
+
+No compilation or installation of the source code is required.
+
+The R analysis scripts and Python simulation scripts can be executed directly after installing the required dependencies listed above using standard package installation procedures.
+
+The installation time depends on the existing software environment, operating system, and internet connection.
+
+#### *Runtime*
+
+Typical runtime for a Python simulation demo execution is less than 1 minute on a standard desktop computer. 
 
 #### *Data source*
 
