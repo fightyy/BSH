@@ -80,7 +80,7 @@ sys, math, random, heapq, subprocess, and collections.
 
 #### *Installation*
 
-No compilation or installation of the source code is required. 
+No compilation of the source code is required. 
 
 The required dependencies can be installed using standard package installation procedures.
 
