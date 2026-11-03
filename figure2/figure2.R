@@ -606,7 +606,9 @@ ggsave("figure2h.pdf",unit="cm", width=7, height=5,dpi = 300)
 
 #figure2i----
 #Distribution of the Silhouette values across all patients
-df <- read_csv("../data/fig2_result_boundary_real.csv")
+df <- read_csv("../data/fig2_result_boundary_real.csv") %>% group_by(Patient) %>%
+  slice_max(silhouette_mean, n = 1, with_ties = FALSE) %>%
+  ungroup()
 ggplot(df, aes(x = silhouette_mean)) +
   geom_histogram(
     aes(y = after_stat(count)),
@@ -626,7 +628,10 @@ ggsave("figure2i.pdf", unit="cm", width=6, height=5, dpi=300)
 
 ###figure2j----
 #Boxplot of Silhouette values across tumor types
-df <- read_csv("../data/fig2_result_boundary_real.csv")
+df <- read_csv("../data/fig2_result_boundary_real.csv") %>% group_by(Patient) %>%
+  slice_max(silhouette_mean, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
 df_boxplot <-  df %>% 
   mutate(patient = map_chr(str_split(Patient, "_"), dplyr::last)) %>% mutate(
     tumor_type = dplyr::recode(

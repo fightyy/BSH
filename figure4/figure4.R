@@ -149,9 +149,6 @@ ITH_plot <-  p1 +
   coord_fixed()+
   my_theme()+
   theme(
-    # legend.position = "bottom",
-    # legend.direction = "horizontal",
-    #plot.title = element_text(size = 7, hjust = 0.5,lineheight =0),
     plot.title = ggtext::element_markdown(lineheight = 1.3, hjust = 0.5,margin = margin(0,0,0,0)),
     legend.box.margin = margin(t = -0.2, unit = "cm"))
 ggsave("figure4c.pdf", unit="cm", width=6, height=5,dpi = 300)
@@ -287,7 +284,7 @@ p <- ggplot(small_df, aes(x = migrate_rate, y = value)) +
 ggsave("figure4d.pdf", units="cm", width=5, height=5)
 
 
-##figure4e----
+###figure4e----
 #The Silhouette values for simulated tumors with different migration rates
 df <- read_csv("../data/fig4_hu_time_boundary_silhouette_migration.csv")
 small_df <- df %>%
@@ -301,7 +298,11 @@ small_df <- df %>%
     s_coef == 0,
     migrate_rate %in% c("0", "0.5" )
   ) %>%
-  mutate(migrate_rate_num = as.numeric(migrate_rate))
+  mutate(migrate_rate_num = as.numeric(migrate_rate)) %>%
+  group_by(seed,migrate_rate) %>%
+  slice_max(silhouette_mean, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
 x_levels <- sort(unique(small_df$migrate_rate_num))
 small_df <- small_df %>%
   mutate(migrate_rate = factor(migrate_rate_num, levels = x_levels, labels = as.character(x_levels)))
@@ -338,96 +339,159 @@ p <- ggplot(small_df, aes(x = migrate_rate, y = silhouette_mean)) +
   )
 ggsave("figure4e.pdf", units="cm", width=3.5, height=5)
 
+
 ###figure4f----
-#GO enrichment of the differentially expressed genes between HCC tumors with high ENNmn values (weak blockness) and low ENNmn values (strong blockness)
-df_enrich <- read_csv("../data/fig4_go_enrich.csv") %>% mutate(score = abs(score))
-df_enrich_sorted <- df_enrich[order(df_enrich$score, decreasing = FALSE), ]
-top5_up <- df_enrich[df_enrich$direction == "Up", ] %>% 
-  dplyr::arrange(pvalue) %>% 
-  head(3)
-top5_down <- df_enrich[df_enrich$direction == "Down", ] %>% 
-  dplyr::arrange(pvalue) %>% 
-  head(3)
-df_enrich_plot <-  rbind(top5_down, top5_up) %>%
-  mutate(Description_wrap = str_wrap(Description, width = 39)) %>%
-  group_by(direction) %>%
+#The bootstrap scores of the phylogenetic trees constructed using SNV, CNV (MEDICC2) and CNV(CNETML).
+# Pool all patients; compare SNV with each CNV method (Wilcoxon + BH-FDR).
+dat <- read_csv("../data/fig4_all_methods_nonroot_node_support_with_cut_flag.csv", show_col_types = FALSE) %>%
+  filter(method %in% c("SNV", "MEDICC2", "CNETML2")) %>%
+  transmute(
+    method = factor(method, levels = c("SNV", "MEDICC2", "CNETML2")),
+    support = as.numeric(support)
+  ) %>%
+  drop_na(support)
+
+comparisons <- list(c("SNV", "MEDICC2"), c("SNV", "CNETML2"))
+tests <- map_dfr(comparisons, \(x) tibble(
+  group1 = x[1], group2 = x[2],
+  p = wilcox.test(dat$support[dat$method == x[1]],
+                  dat$support[dat$method == x[2]], exact = FALSE)$p.value )) %>%
   mutate(
-    Description_wrap = fct_reorder(
-      Description_wrap,
-      score
+    p_adj = p.adjust(p, method = "BH"),
+    label = case_when(
+      p_adj < 0.001 ~ "***",
+      p_adj < 0.01 ~ "**",
+      p_adj < 0.05 ~ "*",
+      TRUE ~ NA_character_
     )
   ) %>%
-  ungroup()
-title_txt <- sprintf(
-  "GO enrichment for HCC (high ENN<sub>MN</sub> VS low ENN<sub>MN</sub>)")
-ggplot(df_enrich_plot,
-       aes(x = score, y = Description_wrap, fill = direction)) +
-  geom_col(width = 0.7) +
-  scale_fill_manual(
-    values = c("Down" = "#1f77b4",
-               "Up"   = "#d62728")
-  ) +
-  scale_x_continuous(labels = scales::label_number())+
-  facet_grid(direction ~ ., scales = "free_y", space = "free_y") +
-  labs(
-    x = "Enrichment significance (−log10 (q))",
-    y = NULL,
-    fill = NULL,
-    title = title_txt
-  ) +
-  my_theme()+
+  filter(!is.na(label)) %>%
+  mutate(y.position = max(dat$support) +
+           ifelse(diff(range(dat$support)) > 0, diff(range(dat$support)), 0.1) *
+           0.1 * row_number())
+
+p <- ggplot(dat, aes(method, support, fill = method)) +
+  geom_boxplot(width = 0.65, outlier.shape = NA, linewidth = 0.4) +
+  scale_fill_manual(values = c(SNV = "#E64B35FF", MEDICC2 = "#1f77b4", CNETML2 = "#2ca02c")) +
+  scale_x_discrete(labels = c(MEDICC2 = "CNV\n(MEDICC2)", CNETML2 = "CNV\n(CNETML2)")) +
+  scale_y_continuous(expand = expansion(mult = c(0.03, 0.18))) +
+  labs(x = NULL, y = "Node bootstrap support") +
+  my_theme() +
   theme(
-    strip.text.y = element_text(face = "bold", size =6 ),
-    plot.title = element_markdown(lineheight = 1.3, hjust = 0.8 ,margin = margin(0,0,0,0)),
-    axis.text.y  = element_text(size = 4),
+    plot.title = element_text(size = 8, face = "bold", hjust = 0.5),
     legend.position = "none"
   )
-ggsave("figure4f.pdf", unit="cm", width=6.5, height=5,dpi = 300)
 
-###figure4g
-#Regression between GSVA score of the GO:0098742 (“cell–cell adhesion via plasma-membrane adhesion molecules”) vs the ENNmn values
-df_score_enn <- read_csv("../data/fig4_gsva_enn.csv")
-fit <- lm(GO_0098742_score ~ value_enn, data = df_score_enn)
-pval <- summary(fit)$coefficients[2, 4]
-
-#P-value in scientific notation
-decompose_p <- function(p) {
-  if (is.na(p) || p <= 0) {
-    p <- .Machine$double.xmin
-  }
-  k <- floor(log10(p))
-  mant <- p / (10^k)
-  list(mant = mant, expo = k)
+if (nrow(tests) > 0) {
+  p <- p + stat_pvalue_manual(
+    tests, label = "label", xmin = "group1", xmax = "group2",
+    y.position = "y.position", family = "Arial", size = 7 / .pt,
+    hide.ns = TRUE, inherit.aes = FALSE
+  )
 }
-dp <- decompose_p(pval)
-mant_str <- formatC(dp$mant, format = "f", digits = 2)
-text_label_expr <- bquote(
-  "p" == .(mant_str) %*% 10^.(dp$expo) )
-text_label_str <- as.character(as.expression(text_label_expr))
 
-#plot
-ggplot(df_score_enn, aes(x = value_enn, y = GO_0098742_score)) +
-  geom_point(color="#1f77b4",size = 1, alpha = 0.5) +
-  geom_smooth(method = "lm", se = T,linewidth = 0.8, color = "red", linetype = 2) +
-  annotate("text", x = mean(range(df_score_enn$value_enn)), y = max(df_score_enn$GO_0098742_score),
-           label = text_label_str, parse = TRUE,
-           size = 7/.pt, fontface = "plain", hjust = 0.5) +
-  labs(
-    x = expression(ENN[MN]),
-    y = "GSVA score (GO:0098742)",
-    title = "HCC"
-  )+
-  my_theme()+
+ggsave("figure4f.pdf", p, width = 5.5, height = 5, units = "cm")
+
+###figure4g----
+#The relationship between sector size  and blockness (ENNmn value)
+sizes <- as.character(seq(4, 24, 4))
+df <- read_csv("../data/fig4_result_sim_sample_strategy_neutral_push1.csv", show_col_types = FALSE) %>%
+  filter((strategy_type == "sector_size" & sample_diameter %in% as.numeric(sizes)) |
+           (strategy_type == "base" & sample_diameter == 16)) %>%
+  dplyr::select(-any_of(c("cat1", "cat2", "n_cross_edges", "n_cat1", "n_cat2", "n_samples"))) %>%
+  distinct() %>%
+  transmute(
+    sector = factor(as.character(sample_diameter), levels = sizes),
+    enn = as.numeric(value_enn)
+  ) %>%
+  filter(is.finite(enn))
+
+tests <- df %>%
+  wilcox_test(enn ~ sector, ref.group = "16", p.adjust.method = "BH", exact = FALSE) %>%
+  add_y_position(step.increase = 0.15)
+
+p <- ggplot(df, aes(sector, enn)) +
+  geom_boxplot(width = 0.7, outlier.shape = NA, linewidth = 0.35, fill = "white") +
+  geom_jitter(width = 0.2, size = 0.5, alpha = 0.6, color = "#1f77b4") +
+  stat_pvalue_manual(tests, label = "p.adj.signif", size = 5 / .pt,
+                     family = "Arial", tip.length = 0.01) +
+  scale_x_discrete(drop = FALSE) +
+  labs(x = "Sector side length (deme units)", y = expression(ENN[MN])) +
+  my_theme() +
   theme(
-    legend.position = "none")
-ggsave("figure4g.pdf", width=5, height=5, units="cm", dpi = 300)
+    legend.position = "none",
+    plot.title = element_text(
+      face = "bold",
+      hjust = 0.5,
+      size = 10,
+      family = "Arial"
+    ),
+    axis.text.x = element_text(angle = 0),
+    axis.title.x = element_text(
+      margin = margin(t = 5)
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 0)
+    )
+  )
 
+ggsave("figure4g.pdf", p,
+       width = 4.5, height = 5, units = "cm")
 
+###figure4h----
+#Differences in boundary strength measured by Silhouette scores between G123 vs G56 from Boyault molecular subtypes.
+plot_df <- read_csv("../data/fig4_patient_silhouette_dominant_subtype_merged.csv", show_col_types = FALSE) %>%
+  filter(
+    str_detect(cohort, regex("ditan|^DT", ignore_case = TRUE)),
+    subtype_system == "Boyault_2007",
+    dominant_subtype %in% c("G123", "G56")
+  ) %>%
+  transmute(
+    molecular_group = factor(
+      dominant_subtype,
+      levels = c("G123", "G56"),
+      labels = c("G123\n(Proliferation)", "G56\n(Metabolism)")
+    ),
+    silhouette = as.numeric(max_silhouette)
+  ) %>%
+  filter(is.finite(silhouette))
 
-###figure4h-4j----
-#figure4h:A neutrally evolving tumor simulated using the boundary growth model
-#figure4i:The phylogenetic tree of the sampled sectors from the simulation in figure4h
-#figure4j:The spatial distribution of the genetic classes for the tumor in panel figure4h
+test <- plot_df %>%
+  rstatix::wilcox_test(silhouette ~ molecular_group, exact = FALSE) %>%
+  rstatix::add_significance("p") %>%
+  mutate(
+    y.position = max(plot_df$silhouette) +
+      0.1 * max(diff(range(plot_df$silhouette)), 0.1)
+  )
+
+p <- ggplot(plot_df, aes(molecular_group, silhouette)) +
+  geom_boxplot(width = 0.62, outlier.shape = NA,
+               linewidth = 0.4, fill = "#1f77b4", color = "black") +
+  stat_pvalue_manual(test, label = "p.signif", size = 7 / .pt,
+                     family = "Arial", tip.length = 0.01) +
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.18))) +
+  labs(x = "Molecular subtype", y = "Silhouette value") +
+  my_theme() +
+  theme(
+    text = element_text(
+      family = "Arial"
+    ),
+    legend.position = "none",
+    axis.text.x = element_text(
+      angle = 0,
+      hjust = 0.5
+    ),
+    axis.title.y = element_text(
+      margin = margin(r = 0)
+    ))
+
+ggsave("figure4h.pdf",
+       p, width = 4.5, height = 5, units = "cm")
+
+###figure4i-4k----
+#figure4i:A neutrally evolving tumor simulated using the boundary growth model
+#figure4j:The phylogenetic tree of the sampled sectors from the simulation in figure4h
+#figure4k:The spatial distribution of the genetic classes for the tumor in panel figure4h
 #code comment see figure4a-4c
 tree_color <- c("#F8766D","#00BFC4","#C77CFF","#7CAE00","#3288BD", "#FFFFBF","#FDAE61", "#9E0142","#5E4FA2")
 colormap=rev(RColorBrewer::brewer.pal(11,'Spectral'))
@@ -533,7 +597,7 @@ tree_plot <- ggtree(rpar1) %<+% annotation2 +
     legend.position = "right",
     legend.box.margin = margin(t = -0.5, unit = "cm")
   )
-ggsave("figure4i.pdf", unit="cm", width=4, height=5,dpi = 300)
+ggsave("figure4j.pdf", unit="cm", width=4, height=5,dpi = 300)
 
 #plot ITH
 loc_genetic_cluster <- data.frame()
@@ -584,7 +648,7 @@ ITH_plot <-  p1 +
     plot.title = element_markdown(lineheight = 1.3, hjust = 0.4,margin = margin(0,0,0,0)),
     legend.box.margin = margin(t = -0.2, unit = "cm"),
     plot.margin = margin(t = 0.1, unit = 'cm'))
-ggsave("figure4j.pdf", unit="cm", width=6, height=5,dpi = 300)
+ggsave("figure4i.pdf", unit="cm", width=6, height=5,dpi = 300)
 
 #plot tumor
 full_location = read.table(file = paste0("../data/csv_example/fig4_snapshot_dim3_pushrandom_" , title, "_prop8_8.txt"), header = T)
@@ -609,58 +673,13 @@ space_plot <- ggplot() +
   labs(title = paste0("Tumor (boundary growth)"), x = NULL, y = NULL) +
   coord_fixed() +
   my_theme()
-ggsave("figure4h.pdf", unit="cm", width=6, height=5,dpi = 300)
+ggsave("figure4k.pdf", unit="cm", width=6, height=5,dpi = 300)
 
 
 
-#figure4k----
-#the Mutation ratio (edge vs center) for the simulated data as well as the real tumor.
-df_boxplot_all <- read_csv("../data/fig4_result_center_edge_real_simulation.csv") %>% 
-                  mutate( tumor_type = factor( tumor_type,levels = c("Simulation", "HCC", "LUAD", "CRC", "GOA") ))
-lv <- levels(df_boxplot_all$tumor_type)
-sim_idx <- which(lv == "Simulation")
-idx_all <- seq_along(lv)
-idx_others <- setdiff(idx_all, sim_idx)
-ordered_others <- idx_others[order(abs(idx_others - sim_idx))]
-comparisons_list <- lapply(lv[ordered_others], function(x) c("Simulation", x))
-ymin <- min(df_boxplot_all$edge_center_ratio, na.rm = TRUE)
-ymax <- max(df_boxplot_all$edge_center_ratio, na.rm = TRUE)
-step <- 0.1 * (ymax - ymin)
-label_y <- ymax + step * seq_along(comparisons_list)
 
-p <- ggplot(df_boxplot_all, aes(x = tumor_type, y = edge_center_ratio, fill = tumor_type)) +
-  geom_boxplot(outliers = FALSE) +
-  geom_hline(yintercept = 1, linetype = 2, color = "red") +
-  scale_fill_manual(values = c(
-    "Simulation" = "#999999",
-    "HCC" = "#E64B35FF",
-    "LUAD" = "#1f77b4",
-    "CRC" = "#2ca02c",
-    "GOA" = "#ff7f0e",
-    "ESCA" = "#FBB4AE",
-    "BLCA" = "#B3CDE3",
-    "PCa" = "#CCEBC5"
-  )) +
-  stat_compare_means(
-    comparisons = comparisons_list,
-    method = "wilcox.test",
-    paired = FALSE,
-    label = "p.signif",
-    size = 6/.pt,
-    label.y = label_y,
-    p.adjust.method = "fdr"
-  ) +
-  labs(x = NULL, y = "Mutation ratio (edge vs center)") +
-  my_theme() +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 45, hjust = 1,size=5)
-  ) +
-  coord_cartesian(ylim = c(0.7, max(label_y) + step*1))
 
-ggsave("figure4k.pdf",unit="cm", width=5, height=5,dpi = 300)
-
-#figure4l----
+###figure4l----
 #The ITH ratio between the edge vs central areas for the simulated tumors as well as real tumors
 df <- read_csv("../data/fig4_real_ITH_corrected_center_edge.csv")
 
@@ -748,3 +767,51 @@ p <- ggplot(df_boxplot_all, aes(x = tumor_type, y = edge_center_ratio, fill = tu
                             max(p_dat$y.position) + 0.1 ),
                   clip = "off") 
 ggsave("figure4l.pdf",unit="cm", width=5, height=5,dpi = 300)
+
+###figure4m----
+#the Mutation ratio (edge vs center) for the simulated data as well as the real tumor.
+df_boxplot_all <- read_csv("../data/fig4_result_center_edge_real_simulation.csv") %>% 
+  mutate( tumor_type = factor( tumor_type,levels = c("Simulation", "HCC", "LUAD", "CRC", "GOA") ))
+lv <- levels(df_boxplot_all$tumor_type)
+sim_idx <- which(lv == "Simulation")
+idx_all <- seq_along(lv)
+idx_others <- setdiff(idx_all, sim_idx)
+ordered_others <- idx_others[order(abs(idx_others - sim_idx))]
+comparisons_list <- lapply(lv[ordered_others], function(x) c("Simulation", x))
+ymin <- min(df_boxplot_all$edge_center_ratio, na.rm = TRUE)
+ymax <- max(df_boxplot_all$edge_center_ratio, na.rm = TRUE)
+step <- 0.1 * (ymax - ymin)
+label_y <- ymax + step * seq_along(comparisons_list)
+
+p <- ggplot(df_boxplot_all, aes(x = tumor_type, y = edge_center_ratio, fill = tumor_type)) +
+  geom_boxplot(outliers = FALSE) +
+  geom_hline(yintercept = 1, linetype = 2, color = "red") +
+  scale_fill_manual(values = c(
+    "Simulation" = "#999999",
+    "HCC" = "#E64B35FF",
+    "LUAD" = "#1f77b4",
+    "CRC" = "#2ca02c",
+    "GOA" = "#ff7f0e",
+    "ESCA" = "#FBB4AE",
+    "BLCA" = "#B3CDE3",
+    "PCa" = "#CCEBC5"
+  )) +
+  stat_compare_means(
+    comparisons = comparisons_list,
+    method = "wilcox.test",
+    paired = FALSE,
+    label = "p.signif",
+    size = 6/.pt,
+    label.y = label_y,
+    p.adjust.method = "fdr"
+  ) +
+  labs(x = NULL, y = "Mutation ratio (edge vs center)") +
+  my_theme() +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1,size=5)
+  ) +
+  coord_cartesian(ylim = c(0.7, max(label_y) + step*1))
+
+ggsave("figure4m.pdf",unit="cm", width=5, height=5,dpi = 300)
+

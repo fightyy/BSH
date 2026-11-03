@@ -447,7 +447,11 @@ df_all <- df %>%
     vaf_cutoff==0,
     s_coef == 0
   ) %>%
-  dplyr::select(silhouette_mean, seed, cat1, cat2, push_prop)
+  dplyr::select(silhouette_mean, seed, cat1, cat2, push_prop) %>% 
+  group_by(seed, push_prop) %>%
+  slice_max(silhouette_mean, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
 df_all$push_prop <- factor(df_all$push_prop)
 x_levels <- sort(unique(df_all$push_prop))
 target <- "0"
